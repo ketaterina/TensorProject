@@ -1,0 +1,98 @@
+/*-----------------------------------------HEADER------------------------------------------*/
+.header{
+    background-color: darkgrey;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+.login{
+    width: 45px;
+    height: 30px;
+    padding-top: 1.3%;
+    margin-left: 1250px;
+}
+.burg{
+    width: 30px;
+    height: 25px;
+    padding-top: 1.5%;
+}
+
+/*-----------------------------------------CONTENT------------------------------------------*/
+.content{
+    height: 100%;
+}
+
+.cardInfo{
+    position: absolute;
+    width: 1200px;
+    height: 284px;
+    left: 130px;
+    top: 85px;
+
+    background: #787878;
+    border-radius: 10px;
+}
+
+.blockInfo{
+    overflow: hidden;
+    padding-top: 300px;
+    padding-left: 20px;
+}
+
+.blockInfo div {
+    float: left;
+    width: 100px;
+    height: 100px;
+    margin-left: 200px;
+    background: #787878;
+}
+
+.startCount{
+    position: absolute;
+    /*left: 532px;*/
+    /*top: 571px;*/
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 35px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    color: #000000;
+    position: absolute;
+    /*width: 300px;*/
+    /*height: 100px;*/
+    left: 620px;
+    top: 571px;
+
+    background: #E4E4D3;
+    border-radius: 10px;
+}
+
+/*.blockInfo1, .blockInfo2, .blockInfo3, .blockInfo4{*/
+/*    width: 100px;*/
+/*    height: 100px;*/
+
+/*    background: #787878;*/
+/*    border-radius: 10px;*/
+/*}*/
+
+
+/*-----------------------------------------FOOTER-------------------------------------------*/
+.footer{
+    background-color: darkgrey;
+    width: 99%;
+    /*overflow: hidden;*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+
+    position: absolute;
+    /*width: 300px;*/
+    height: 50px;
+
+    top: 690px;
+}
