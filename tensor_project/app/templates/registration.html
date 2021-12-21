@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница регистрации</title>
+    <link rel="stylesheet" href="../static/ARA.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+
+    <body>
+        <div class="header">
+            <nav class="navbar navbar-expand-sm" id="nav1">
+                <a class="navbar-brand" href="/mainPage"><img src="../static/resourses/img/PPM1.png" style="height: 40px; padding-left: 15%;"></a>
+                <a class="navbar" href="/account" ><img src="../static/resourses/img/account.png" style="height: 40px; margin-left: 2900%;"></a>
+                {% if session['user']%}
+                  <a class="navbar" href="/exit" >Выход</a>
+                {% endif %}
+              </nav>
+        </div>
+    
+        <div class="container">
+            <div class="row">
+                
+                    <div class="col-md-offset-3 col-md-6">
+                    <form class="form-horizontal" id="form_registration" action="/registration/submit" method="POST">
+                    <span class="heading">РЕГИСТРАЦИЯ</span>
+                    <div class="form-group">
+                      {% if message%}
+                        <p>{{ message }}</p>
+                      {% endif %}
+                    <input type="text" class="form-control" id="check_login" placeholder="Login" name="check_login"  pattern="[A-Za-z0-9]{3,}" required>
+                    <i class="fa fa-user"></i>
+                    </div>
+                    <div class="form-group help">
+                    <input type="password" class="form-control" id="check_pass" placeholder="Password" name="check_pass" required>
+                    <i class="fa fa-lock"></i>
+                    <!-- Подсказка пароля ? -->
+                    <a href="#" class="fa fa-question-circle" title="Пароль должен состоят из 8 символов"></a>
+                    <!-- Подсказка пароля ? -->
+                    </div>
+                    <div class="form-group">
+                    <div class="main-checkbox">
+                    <input type="checkbox" value="none" id="checkbox1" name="check"/>
+                    <label for="checkbox1"></label>
+                    </div>
+                    <span class="text">Запомнить</span>
+                    <button type="submit" class="btn btn-default">Регистрация</button> 
+                    <!-- <button type="submit" class="btn btn-default">Авторизация</button> -->
+                    <a href="/authorization">Авторизация</a>
+                    </div>
+                    </form>
+                    </div>
+                
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </form>
+    
+    
+    
+    
+    <footer
+              class="text-center text-lg-start text-white"
+              style="background-color: #1c2331; margin-top: 5.9%;"
+              >
+     
+        </section>
+       
+        <!-- Section: Links  -->
+        <section class="">
+          <div class="container text-center text-md-start mt-5" style="height: 214px;">
+            <!-- Grid row -->
+            <div class="row mt-3">
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <!-- Content -->
+                <h6 class="text-uppercase fw-bold">Ремонтные расчеты материалов</h6>
+                <hr
+                    class="mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 60px; background-color: #FFCA18; height: 2px"
+                    />
+                <p>
+                  Данный продукт предназначен для реализации быстрых и точных расчётов строительно-ремонтных 
+                  материалов и составления реестра.
+                </p>
+              </div>
+              <!-- Grid column -->
+    
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold">Наши продукты</h6>
+                <hr
+                    class="mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 60px; background-color: #FFCA18; height: 2px"
+                    />
+                <p>
+                  <a href="#!" class="text-white">Ремонтные расчеты материалов</a>
+                </p>
+                <!-- <p>
+                  <a href="#!" class="text-white">...</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">...</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">...</a> -->
+                </p>
+              </div>
+              <!-- Grid column -->
+    
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-5">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold">Полезные ссылки</h6>
+                <hr
+                    class="mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 60px; background-color: #FFCA18; height: 2px"
+                    />
+                
+                <p>
+                  <a href="#!" class="text-white">Советы</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">Помощь</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">Как измерять?</a>
+                </p>
+                <p>
+                  <a href="#!" class="text-white">Статьи о ремонте</a>
+                </p>
+              </div>
+              <!-- Grid column -->
+    
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <!-- Links -->
+                <h6 class="text-uppercase fw-bold">Контакты</h6>
+                <hr
+                    class="mb-4 mt-0 d-inline-block mx-auto"
+                    style="width: 60px; background-color: #FFCA18; height: 2px"
+                    />
+                <p><i class="mr-3"></i> Тюмень, 625000, Россия</p>
+                <p><i class="mr-3"></i> PPM@mail.ru</p>
+                <p><i class="mr-3"></i> +7 992 333 22 22</p>
+                
+              </div>
+              <!-- Grid column -->
+            </div>
+            <!-- Grid row -->
+          </div>
+        </section>
+        <!-- Section: Links  -->
+    
+        <!-- Copyright -->
+        <div
+             class="text-center p-3"
+             style="background-color: rgba(0, 0, 0, 0.2)"
+             >
+          © 2021 Copyright:
+          <a class="text-white" href="https://PPM.ru/"
+             >PPM.ru</a
+            >
+        </div>
+        <!-- Copyright -->
+      </footer>
+</html>

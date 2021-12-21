@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/counter.css">
+    <link rel="stylesheet" href="../static/ARA.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+<div id="app">
+<div class="header">
+
+  <nav class="navbar navbar-expand-sm" id="nav1">
+    <a class="navbar-brand" href="mainPage.html"><img src="../static/resourses/img/PPM1.png" style="height: 40px; padding-left: 15%;"></a>
+    <a class="navbar" href="authorization.html" ><img src="../static/resourses/img/account.png" style="height: 40px; margin-left: 2900%;"></a>
+  </nav>
+
+</div>
+<div class="content">
+
+  <div class="room" id="room">
+    <form class="room_renovation">
+
+      <div class="form-row" id="block0">
+       <h2> Название комнаты </h2> 
+
+      <div class="form-group col-md-2">
+          <input type="text" class="form-control" id="name_room" placeholder="Гостиная" required style="margin-top: 1.5%; margin-left: 2%;">
+      </div> 
+    </div>
+
+        <div class="form-row" id="block1">
+
+            <legend> <h5> ПАРАМЕТРЫ КОМНАТЫ </h5> </legend>
+              <br />
+             <div class="form-group col-md-1">
+                <label> Длина </label>
+                <input type="text" v-model.number="long_room" class="form-control" id="long_room" placeholder="0.0 (м)" required>
+            </div> 
+            <div class="form-group col-md-1">
+                <label> Ширина </label>
+                <input type="text" v-model.number="width_room" class="form-control" id="width_room" placeholder="0.0 (м)" required>
+            </div>
+            <div class="form-group col-md-1">
+                <label> Высота </label>
+                <input type="text" v-model.number="height_room" class="form-control" id="height_room" placeholder="0.0 (м)" required>
+            </div>
+
+        </div>
+
+        <div class="form-row" id="block2">
+
+          <legend> <h5> НЕИСПОЛЬЗУЕМАЯ ПЛОЩАДЬ </h5> </legend>
+        <div>
+          <b> Дверь </b>
+          <div class="form-group col-md-7">
+              <label> Длина </label>
+              <input type="text" v-model.number="height_door" class="form-control" id="height_door" placeholder="0.0 (м)" >
+          </div> 
+          <div class="form-group col-md-7">
+              <label> Ширина </label>
+              <input type="text" v-model.number="width_door" class="form-control" id="width_door" placeholder="0.0 (м)">
+          </div>
+          <div class="form-group col-md-7">
+            <label> Количество </label>
+            <input type="text" v-model.number="count_door" class="form-control" id="count_door" placeholder="1 (шт)">
+          </div>
+        </div>
+
+        <div>
+          <b> Окно </b>
+          <div class="form-group col-md-7">
+              <label> Длина </label>
+              <input type="text" v-model.number="height_window" class="form-control" id="height_window" placeholder="0.0 (м)" >
+          </div> 
+          <div class="form-group col-md-7">
+              <label> Ширина </label>
+              <input type="text" v-model.number="width_window" class="form-control" id="width_window" placeholder="0.0 (м)">
+          </div>
+          <div class="form-group col-md-7">
+            <label> Количество </label>
+            <input type="text" v-model.number="count_window" class="form-control" id="count_window" placeholder="1 (шт)">
+          </div>
+        </div>
+
+   
+      </div>
+
+    <div class="form-row" id="block3">
+
+      <legend> <h5>ПАРАМЕТРЫ РЕМОНТА</h5> </legend>
+
+      <div class="form-group col-md-4">
+        <label> <b> Потолок </b> </label>
+
+        <select  id="input_ceiling" class="form-control" name="select" @change="onChangeSelectedCeiling" style="width: 200px;">
+          <option value="0" selected>Выбрать материал</option>
+          {% for opt in range(option_ceiling|length) %}
+          <option value="{{ option_ceiling[opt][2] }}">{{ option_ceiling[opt][1] }}</option>
+          {% endfor %}
+
+        </select>
+      </div>
+
+<!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ ПОТОЛКА --><!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ ПОТОЛКА --><!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ ПОТОЛКА --><!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ ПОТОЛКА -->
+
+    <div id="select1_id1">
+      <div class="form-group col-md-7">
+        <label> Длина предмета </label>
+        <input type="text" class="form-control" v-model.number="length_part_ceiling" id="length_part_ceiling" placeholder="0.0 (м)" >
+      </div> 
+      <div class="form-group col-md-7">
+        <label> Ширина предмета</label>
+        <input type="text" class="form-control" v-model.number="width_part_ceiling" id="width_part_ceiling" placeholder="0.0 (м)" >
+      </div> 
+      <div class="form-group col-md-7">
+        <label> Стоимость </label>
+        <input type="text" class="form-control" v-model.number="price_ceiling" id="price_ceiling" placeholder=" (руб/шт)" >
+      </div>
+    </div>
+
+    <div id="select1_id2">
+      <div class="form-group col-md-7">
+        <label> Нормативный <br /> расход краски </label>
+        <input type="text" class="form-control" v-model.number="rashod_kraska_ceiling" id="rashod_kraska_ceiling" placeholder="0.0 (л/м2)" >
+      </div> 
+      <div class="form-group col-md-7">
+        <label> Стоимость </label>
+        <input type="text" class="form-control" v-model.number="price_ceiling" id="price_ceiling" placeholder="0.0 (руб/л)" >
+      </div>
+      <div class="">                               
+      </div> 
+    </div>
+
+    <div id="select1_id3">
+      <div class="form-group col-md-7">
+        <label> Стоимость </label>
+        <input type="text" class="form-control" v-model.number="price_ceiling" id="price_ceiling" placeholder=" (руб/кг)" >
+      </div>
+    </div>
+
+    <div id="select1_id4">
+      <div class="form-group col-md-7">
+        <label> Стоимость </label>
+        <input type="text" class="form-control" v-model.number="price_ceiling" id="price_ceiling" placeholder=" (руб/м2)" >
+      </div>
+    </div>
+
+                                
+                                
+<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+      <div class="form-group col-md-4" >
+        <label> <b> Стена </b> </label>
+
+        <select id="input_wall" class="form-control" name="select_5" @change="onChangeSelectedWalls" style="width: 200px;">
+          <option value="0" selected> Выбрать материал </option>
+          {% for opt in range(option_walls|length) %}
+          <option value="{{ option_walls[opt][2] }}">{{ option_walls[opt][1] }}</option>
+          {% endfor %}
+        </select>
+      </div>
+     
+<!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ СТЕН --><!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ СТЕН --><!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ СТЕН --><!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ СТЕН -->
+    <div id="select2_id1">
+      <div class="form-group col-md-7">
+        <label> Расход на м2 </label>
+        <input type="text" class="form-control" v-model.number="rashod_kraska_walls" id="rashod_kraska_walls" placeholder="0.0 (кг/м2)" >
+        <label> Стоимость </label>
+        <input type="text" class="form-control" v-model.number="price_walls" id="price_walls" placeholder=" (руб/кг)" >
+      </div>
+    </div>
+
+    <div id="select2_id2">
+      <div class="form-group col-md-7">
+        <label> Нормативный <br /> расход краски </label>
+        <input type="text" class="form-control" v-model.number="rashod_kraska_walls" id="rashod_kraska_walls" placeholder="0.0 (л/м2)" >
+      </div> 
+      <div class="form-group col-md-7">
+        <label> Стоимость </label>
+        <input type="text" class="form-control" v-model.number="price_walls" id="price_walls" placeholder="0.0 (руб/л)" >
+      </div>
+    </div>
+
+    <div id="select2_id3">
+      <div class="form-group col-md-7">
+        <label> Длина предмета </label>
+        <input type="text" class="form-control" v-model.number="length_part_walls" id="length_part_walls" placeholder="0.0 (м)" >
+      </div> 
+      <div class="form-group col-md-7">
+        <label> Ширина предмета</label>
+        <input type="text" class="form-control" v-model.number="width_part_walls" id="width_part_walls" placeholder="0.0 (м)" >
+      </div> 
+      <div class="form-group col-md-7">
+        <label> Стоимость </label>
+        <input type="text" class="form-control" v-model.number="price_walls" id="price_walls" placeholder=" (руб/шт)" >
+      </div>
+    </div>
+
+    <div id="select2_id4">                                          
+      <div class="form-group col-md-7">
+        <label> Ширина рулона</label>
+        <input type="text" class="form-control" v-model.number="width_rul_walls" id="width_rul_walls" placeholder="0.0 (м)" >
+      </div> 
+      <div class="form-group col-md-7">
+        <label> Стоимость </label>
+        <input type="text" class="form-control" v-model.number="price_walls" id="price_walls" placeholder=" (руб/рул)" >
+      </div>
+      <div class="form-group col-md-7">
+        <input type="radio" id="raport" value="0" v-model="raport" @change="changeRaport">
+        <label for="two">Без рапорта</label>
+
+        <input type="radio" id="raport" value="1" v-model="raport" @change="changeRaport">
+        <label for="one">С рапортом</label>
+        <div class="form-group col-md-7" id="div_raport_true">
+          <label>Длина рапорта</label>
+          <input type="text" class="form-control" v-model.number="long_raport" id="long_raport" placeholder="0.0 (м)" >
+          <input type="radio" id="raport_p" value="0" v-model="raport_true">
+          <label for="one">Прямое соединение</label>
+          <input type="radio" id="raport_s" value="1" v-model="raport_true">
+          <label for="one">Со смещением</label>
+        </div>
+    </div>
+  </div>
+
+                                          
+<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+
+      <div class="form-group col-md-4">
+        <label> <b> Пол </b> </label>
+
+        <select id="input_floor" class="form-control" name="select_5" @change="onChangeSelectedFloor" style="width: 200px;">
+          <option value="0" selected> Выбрать материал </option>
+          {% for opt in range(option_floor|length) %}
+          <option value="{{ option_floor[opt][2] }}">{{ option_floor[opt][1] }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+
+<!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ ПОЛА --><!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ ПОЛА --><!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ ПОЛА --><!-- ИНПУТЫ С РАСЧЕТАМИ ДЛЯ ПОЛА -->      
+  <div id="select3_id1">
+    <div class="form-group col-md-7">
+      <label> Длина <br /> предмета </label>
+      <input type="text" class="form-control"  v-model.number="length_part_floor" id="length_part_floor" placeholder="0.0 (м)" >
+    </div> 
+    <div class="form-group col-md-7">
+      <label> Ширина <br /> предмета</label>
+      <input type="text" class="form-control"  v-model.number="width_part_floor" id="width_part_floor" placeholder="0.0 (м)" >
+    </div> 
+    <div class="form-group col-md-7">
+      <label> Стоимость </label>
+      <input type="text" class="form-control"  v-model.number="price_floor" id="price_floor" placeholder=" (руб/шт)" >
+    </div>
+  </div>
+
+  <div id="select3_id2">
+    <div class="form-group col-md-7">
+      <label> Ширина листа</label>
+      <input type="text" class="form-control"  v-model.number="width_list_floor" id="width_list_floor" placeholder="0.0 (м)" >
+    </div> 
+    <div class="form-group col-md-7">
+      <label> Стоимость </label>
+      <input type="text" class="form-control"  v-model.number="price_floor" id="price_floor" placeholder=" (руб/м.п)" >
+    </div>
+  </div>
+
+  <div id="select3_id3">
+    <div class="form-group col-md-7">
+      <label> Нормативный <br /> расход краски </label>
+      <input type="text" class="form-control"  v-model.number="rashod_kraska_floor" id="rashod_kraska_floor" placeholder="0.0 (л/м2)" >
+    </div> 
+      <div class="form-group col-md-7">
+        <label> Стоимость </label>
+        <input type="text" class="form-control"  v-model.number="price_floor" id="price_floor" placeholder="0.0 (руб/л)" >
+      </div>                             
+    </div> 
+  </div>
+
+<!-- \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ -->
+        </form>
+    </div>
+</div>
+
+<a href="#" class="button28" v-on:click="full_calc" > Получить расчеты </a> 
+
+<div id="output1" style="text-align: center;">
+
+  <h3> Cписок расчетов </h3>
+ 
+ <p v-if="wall_area">
+   Площадь стен: <span class="output_value"> [[wall_area]] м<sup>2</sup> </span>
+ </p>
+ <p v-if="floor_area">
+   Площадь пола и потолка: <span class="output_value"> [[floor_area]] м<sup>2</sup>  </span>
+ </p>
+
+ <p v-if="calc_number_wall">
+  СТЕНЫ:<br>Количество материалов на стены: <span class="output_value">[[calc_number_wall]] [[material_walls]]  </span>
+</p>
+<p v-if="cost_material_walls">
+  Стоимость материалов на стены: <span class="output_value"> [[cost_material_walls]] руб.  </span>
+</p>
+ <p v-if="plaster">
+   Количество штукатурки на стены: <span class="output_value">[[plaster]] кг  </span>
+ </p>
+ <p v-if="cost_plaster">
+   Стоимость штукатурки на стены: <span class="output_value"> [[cost_plaster]] руб.  </span>
+ </p>
+ <p v-if="level_filling">
+  Количество выравнивающей шпатлёвки на стены: <span class="output_value"> [[level_filling]] кг  </span>
+</p>
+ <p v-if="cost_level_filling">
+  Стоимость выравнивающей шпатлёвки на стены: <span class="output_value"> [[cost_level_filling]] руб.  </span>
+</p>
+<p v-if="finish_filling">
+  Количество финишной шпатлёвки на стены: <span class="output_value"> [[level_filling]] кг  </span>
+</p>
+ <p v-if="cost_finish_filling">
+  Стоимость финишной шпатлёвки на стены: <span class="output_value"> [[cost_level_filling]] руб.  </span>
+</p>
+<p v-if="primer">
+  Количество грунтовки на стены: <span class="output_value">[[primer]] кг  </span>
+</p>
+<p v-if="cost_primer">
+  Стоимость грунтовки на стены: <span class="output_value"> [[cost_primer]] руб.  </span>
+</p>
+
+<p v-if="calc_number_ceiling">
+  ПОТОЛОК:<br>Количество материалов на потолок: <span class="output_value">[[calc_number_ceiling]] [[material_ceiling]]  </span>
+</p>
+<p v-if="cost_material_ceiling">
+  Стоимость материалов на потолок: <span class="output_value"> [[cost_material_ceiling]] руб.  </span>
+</p>
+ <p v-if="filling_ceiling">
+   Количество шпатлёвки на потолок: <span class="output_value"> [[filling_ceiling]] кг  </span>
+ </p>
+ <p v-if="cost_filling_ceiling">
+   Стоимость шпатлёвки на потолок: <span class="output_value"> [[cost_filling_ceiling]] руб.  </span>
+ </p>
+
+
+ <p v-if="calc_number_floor">
+  ПОЛ:<br>Количество материалов на пол: <span class="output_value"> [[calc_number_floor]] [[material_floor]]  </span>
+ </p>
+ <p v-if="cost_material_floor">
+   Стоимость материалов на пол: <span class="output_value"> [[cost_material_floor]] руб.  </span>
+ </p>
+ <p v-if="coupler">
+  Количество стяжки на потолок: <span class="output_value"> [[coupler]] кг  </span>
+</p>
+<p v-if="cost_coupler">
+  Стоимость стяжки на потолок: <span class="output_value"> [[cost_coupler]] руб.  </span>
+</p>
+<p v-if="full_cost">
+  ИТОГО: <span class="output_value"> [[full_cost]] руб.  </span>
+</p>
+ 
+<a href="#" class="button28" onclick="javascript:window.print()" > Скачать </a>
+</div>
+  <div style="height:500px;"></div>
+</div> 
+
+ <footer class="text-center text-lg-start text-white"
+            style="background-color: #1c2331; margin-top: 5.9%;" >
+</section>
+
+<section class="">
+<div class="container text-center text-md-start mt-5" style="height: 214px;">
+
+  <div class="row mt-3">
+
+    <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+ 
+      <h6 class="text-uppercase fw-bold">Ремонтные расчеты материалов</h6>
+      <hr
+          class="mb-4 mt-0 d-inline-block mx-auto"
+          style="width: 60px; background-color: #FFCA18; height: 2px"
+          />
+      <p>
+        Данный продукт предназначен для реализации быстрых и точных расчётов строительно-ремонтных 
+        материалов и составления реестра.
+      </p>
+    </div>
+   
+    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+  
+      <h6 class="text-uppercase fw-bold">Наши продукты</h6>
+      <hr
+          class="mb-4 mt-0 d-inline-block mx-auto"
+          style="width: 60px; background-color: #FFCA18; height: 2px"
+          />
+      <p>
+        <a href="#!" class="text-white">Ремонтные расчеты материалов</a>
+      </p>
+      </p>
+    </div>
+  
+    <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-5">
+ 
+      <h6 class="text-uppercase fw-bold">Полезные ссылки</h6>
+      <hr
+          class="mb-4 mt-0 d-inline-block mx-auto"
+          style="width: 60px; background-color: #FFCA18; height: 2px"
+          />
+      
+      <p>
+        <a href="#!" class="text-white">Советы</a>
+      </p>
+      <p>
+        <a href="#!" class="text-white">Помощь</a>
+      </p>
+      <p>
+        <a href="#!" class="text-white">Как измерять?</a>
+      </p>
+      <p>
+        <a href="#!" class="text-white">Статьи о ремонте</a>
+      </p>
+    </div>
+
+    <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+      <h6 class="text-uppercase fw-bold">Контакты</h6>
+      <hr
+          class="mb-4 mt-0 d-inline-block mx-auto"
+          style="width: 60px; background-color: #FFCA18; height: 2px"
+          />
+      <p><i class="mr-3"></i> Тюмень, 625000, Россия</p>
+      <p><i class="mr-3"></i> PPM@mail.ru</p>
+      <p><i class="mr-3"></i> +7 992 333 22 22</p>
+      
+    </div>
+  </div>
+</div>
+</section>
+
+ <div
+   class="text-center p-3"
+   style="background-color: rgba(0, 0, 0, 0.2)"
+   >
+© 2021 Copyright:
+<a class="text-white" href="https://PPM.ru/"
+   >PPM.ru</a>
+</body>
+
+
+<script src="https://unpkg.com/vue@next"></script>
+<script src="../static/Calculate.js"></script>
+
+</html>

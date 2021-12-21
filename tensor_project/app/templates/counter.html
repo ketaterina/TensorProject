@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/mainPage.css">
+    <link rel="stylesheet" href="../static/counter.css">
+    <title>Страница расчета</title>
+</head>
+<body>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="../static/Calculate.js"></script> 
+
+    <div id="ttt">
+        <p>{{title}}</p>
+    </div>
+    
+    <div id="app">
+    <div class="header">
+        <h2>Logo site</h2>
+        <img class="login" src="../static/resourses/img/login.png">
+        <img class="burg" src="../static/resourses/img/burg.png">
+    </div>
+
+    <div class="content">
+        <div class="room">
+            <div class="name_room">
+                <h1>Введите название комнаты <input type="text" id="name_room" placeholder="Комната №1" required> </h1>
+            </div>
+
+            <div class="parameter_room">
+                <h2 @mouseover="change">Параметры комнаты</h2>
+                
+                <span>Длина <input type="text" v-model="result" placeholder="0.0" id="long_room" required> </span> <br/>
+                <span>Ширина <input type="text" v-on:input="" placeholder="0.0" id="width_room" required> </span> <br/>
+                <span>Высота <input type="text" placeholder="0.0" id="height_room" required>  </span>
+                <p> {{ length_room }} </p>
+                <p> {{ width_room }} </p>
+
+                <input v-model="text" type="text" v-on:input="www ($event.target.value)">
+                <p> {{ text }} </p>
+               <button onclick="square()"></button>
+               <input type="text" id="square_input">
+
+            </div>
+
+            <div class="nonwork_area">
+                <h2>Неиспользуемая площадь</h2> <br/>
+                <button>Добавить окно</button> <br/><br/> <!--тут name="count_windows" для кол-ва дверей, кнопка + или - -->
+                Окно № <number></number>
+                Ширина <input type="text" name="width_window">
+                Высота <input type="text" name="height_window">
+
+                <br/>
+                <button>Добавить дверь</button> <br/> <!--тут name="count_doors" для кол-ва дверей, кнопка + или - -->
+                Дверь № <number></number> 
+                Ширина <input type="text" name="width_door">
+                Высота <input type="text" name="height_door">
+
+            </div>
+
+
+            <div class="parameter_renovation">
+                <h2>Параметры ремонта</h2><br/>
+                Потолок
+                    <select>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+
+                    </select>
+                Стены
+                    <select>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+
+                    </select>
+                Пол
+                    <select>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                        <option> </option>
+                    </select>
+            </div>
+
+
+
+
+
+        </div>
+
+        <button>Добавить новую комнату</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--        <div class="content_choose-room">-->
+<!--            <div class="content_item">-->
+<!--                <div class="content_item_photo"></div><p>+ Кухня -</p></div>-->
+<!--            <div class="content_item">-->
+<!--                <div class="content_item_photo"></div><p>+ Зал -</p></div>-->
+<!--            <div class="content_item">-->
+<!--                <div class="content_item_photo"></div><p>+ Спальня -</p></div>-->
+<!--            <div class="content_item">-->
+<!--                <div class="content_item_photo"></div><p>+ Коридор -</p></div>-->
+<!--            <div class="content_item">-->
+<!--                <div class="content_item_photo"></div><p>+ Ванная -</p></div>-->
+<!--            <div class="content_item">-->
+<!--                <div class="content_item_photo"></div><p>+ Туалет -</p></div>-->
+<!--            <div class="content_item">-->
+<!--                <div class="content_item_photo"></div><p>+ Общий сан.узел -</p></div>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="separator"></div>-->
+<!--        -->
+<!--        <div class="content_choose-type-work">-->
+<!--            <div class="content_item-choose indent">-->
+<!--                <div class="name_room">Кухня</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_checkbox">-->
+<!--                <p><input type="checkbox">Потолок</p>-->
+<!--                <p><input type="checkbox">Стены</p>-->
+<!--                <ul>-->
+<!--                    <li><p><input type="checkbox">Обои виниловые</p></li>-->
+<!--                    <li><p><input type="checkbox">Обои жидкие</p></li>-->
+<!--                    <li><p><input type="checkbox">Плитка</p></li>-->
+<!--                    <li><p><input type="checkbox">Краска</p></li>-->
+<!--                </ul>-->
+<!--                <p><input type="checkbox">Пол</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="content_item-choose">-->
+<!--                <div class="name_room">Зал</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_checkbox">-->
+<!--                <p><input type="checkbox">Потолок</p>-->
+<!--                <p><input type="checkbox">Стены</p>-->
+<!--                <p><input type="checkbox">Пол</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="content_item-choose">-->
+<!--                <div class="name_room">Спальня</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_checkbox">-->
+<!--                <p><input type="checkbox">Потолок</p>-->
+<!--                <p><input type="checkbox">Стены</p>-->
+<!--                <p><input type="checkbox">Пол</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="content_item-choose">-->
+<!--                <div class="name_room">Коридор</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_checkbox">-->
+<!--                <p><input type="checkbox">Потолок</p>-->
+<!--                <p><input type="checkbox">Стены</p>-->
+<!--                <p><input type="checkbox">Пол</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="content_item-choose">-->
+<!--                <div class="name_room">Ванная</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_checkbox">-->
+<!--                <p><input type="checkbox">Потолок</p>-->
+<!--                <p><input type="checkbox">Стены</p>-->
+<!--                <p><input type="checkbox">Пол</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="content_item-choose">-->
+<!--                <div class="name_room">Туалет</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_checkbox">-->
+<!--                <p><input type="checkbox">Потолок</p>-->
+<!--                <p><input type="checkbox">Стены</p>-->
+<!--                <p><input type="checkbox">Пол</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="content_item-choose">-->
+<!--                <div class="name_room">Общий сан.узел</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_checkbox">-->
+<!--                <p><input type="checkbox">Потолок</p>-->
+<!--                <p><input type="checkbox">Стены</p>-->
+<!--                <p><input type="checkbox">Пол</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="separator"></div>-->
+<!--        -->
+<!--        <div class="content_choose-square">-->
+<!--            <div class="content_item-square">-->
+<!--                <div class="name_room">Кухня</div>-->
+<!--                <h3>Площадь комнаты</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                <h3>Площадь дверей и окон</h3>-->
+<!--                <div class="item_square-windows-doors">-->
+<!--                    <p>Добавить окно -1+</p>-->
+<!--                    <p>Окно №1: </p>-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Добавить дверь -0+</p>-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-square">-->
+<!--                <div class="name_room">Зал</div>-->
+<!--                <h3>Площадь комнаты</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                <h3>Площадь дверей и окон</h3>-->
+<!--                <div class="item_square-windows-doors">-->
+<!--                    <p>Добавить окно -1+</p>-->
+<!--                    <p>Окно №1: </p>-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Добавить дверь -0+</p>-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-square">-->
+<!--                <div class="name_room">Спальня</div>-->
+<!--                <h3>Площадь комнаты</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                <h3>Площадь дверей и окон</h3>-->
+<!--                <div class="item_square-windows-doors">-->
+<!--                    <p>Добавить окно -1+</p>-->
+<!--                    <p>Окно №1: </p>-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Добавить дверь -0+</p>-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-square">-->
+<!--                <div class="name_room">Коридор</div>-->
+<!--                <h3>Площадь комнаты</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                <h3>Площадь дверей и окон</h3>-->
+<!--                <div class="item_square-windows-doors">-->
+<!--                    <p>Добавить окно -1+</p>-->
+<!--                    <p>Окно №1: </p>-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Добавить дверь -0+</p>-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-square">-->
+<!--                <div class="name_room">Ванная</div>-->
+<!--                <h3>Площадь комнаты</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                <h3>Площадь дверей и окон</h3>-->
+<!--                <div class="item_square-windows-doors">-->
+<!--                    <p>Добавить окно -1+</p>-->
+<!--                    <p>Окно №1: </p>-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Добавить дверь -0+</p>-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-square">-->
+<!--                <div class="name_room">Туалет</div>-->
+<!--                <h3>Площадь комнаты</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                <h3>Площадь дверей и окон</h3>-->
+<!--                <div class="item_square-windows-doors">-->
+<!--                    <p>Добавить окно -1+</p>-->
+<!--                    <p>Окно №1: </p>-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Добавить дверь -0+</p>-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-square">-->
+<!--                <div class="name_room">Общий сан.узел</div>-->
+<!--                <h3>Площадь комнаты</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                <h3>Площадь дверей и окон</h3>-->
+<!--                <div class="item_square-windows-doors">-->
+<!--                    <p>Добавить окно -1+</p>-->
+<!--                    <p>Окно №1: </p>-->
+<!--                    <label>Ширина</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Высота</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Добавить дверь -0+</p>-->
+<!--                </div>-->
+<!--                </div>-->
+<!--        </div>-->
+<!--        -->
+<!--        <div class="separator"></div>-->
+<!--       -->
+<!--        <div class="content_choose-materials">-->
+<!--            <div class="content_item-materials">-->
+<!--                <div class="name_room">Кухня</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <p>Обои:</p>-->
+<!--                    <label>Длина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Ширина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Стоимость рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Линолеум:</p>-->
+<!--                    <label>Стоимость м2</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-materials">-->
+<!--                <div class="name_room">Зал</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <p>Обои:</p>-->
+<!--                    <label>Длина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Ширина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Стоимость рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Линолеум:</p>-->
+<!--                    <label>Стоимость м2</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-materials">-->
+<!--                <div class="name_room">Спальня</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <p>Обои:</p>-->
+<!--                    <label>Длина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Ширина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Стоимость рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Линолеум:</p>-->
+<!--                    <label>Стоимость м2</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-materials">-->
+<!--                <div class="name_room">Коридор</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <p>Обои:</p>-->
+<!--                    <label>Длина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Ширина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Стоимость рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Линолеум:</p>-->
+<!--                    <label>Стоимость м2</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-materials">-->
+<!--                <div class="name_room">Ванная</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <p>Обои:</p>-->
+<!--                    <label>Длина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Ширина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Стоимость рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Линолеум:</p>-->
+<!--                    <label>Стоимость м2</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-materials">-->
+<!--                <div class="name_room">Туалет</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <p>Обои:</p>-->
+<!--                    <label>Длина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Ширина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Стоимость рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Линолеум:</p>-->
+<!--                    <label>Стоимость м2</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--                </div>-->
+<!--            <div class="content_item-materials">-->
+<!--                <div class="name_room">Общий сан.узел</div>-->
+<!--                <h3>Выберите тип работ</h3>-->
+<!--                <div class="item_square-room">-->
+<!--                    <p>Обои:</p>-->
+<!--                    <label>Длина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Ширина рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <label>Стоимость рулона</label><input type="text" required pattern="[0-9]">-->
+<!--                    <p>Линолеум:</p>-->
+<!--                    <label>Стоимость м2</label><input type="text" required pattern="[0-9]">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        
+
+
+
+
+<!-- ______________________________________________________________________________________________________________________ -->
+
+
+
+        <!-- <div class="separator"></div>
+        
+        <div class="content_results">
+            <h3>Итоговый лист</h3>
+            <h4>Кухня</h4>
+            <ul>
+                <li class="content_results_li">Обои 3шт 20 000р</li>
+                <li class="content_results_li">Кисточка 2шт 500р</li>
+                <li class="content_results_li">Клей 1кг 100р</li>
+            </ul>
+            
+            <h4>Зал</h4>
+            <ul>
+                <li class="content_results_li">Обои 3шт 20 000р</li>
+                <li class="content_results_li">Кисточка 2шт 500р</li>
+                <li class="content_results_li">Клей 1кг 100р</li>
+            </ul>
+            <h4>Спальня</h4>
+            <ul>
+                <li class="content_results_li">Обои 3шт 20 000р</li>
+                <li class="content_results_li">Кисточка 2шт 500р</li>
+                <li class="content_results_li">Клей 1кг 100р</li>
+            </ul>
+            <h4>Туалет</h4>
+            <ul>
+                <li class="content_results_li">Обои 3шт 20 000р</li>
+                <li class="content_results_li">Кисточка 2шт 500р</li>
+                <li class="content_results_li">Клей 1кг 100р</li>
+            </ul>
+            <button>Скачать Excel</button>
+            <button>Скачать Doc</button>
+
+        </div> -->
+    </div>
+
+        <div class="footer">
+            Copyright 2021
+        </div>
+    </div>
+    
+        <script src="../static/counter.js"></script>
+</body>
+</html>

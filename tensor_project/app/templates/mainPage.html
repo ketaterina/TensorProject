@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../static/mainPage.css">
+    <title>Главная страница</title>
+    <link rel="stylesheet" href="../static/ARA.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+</head>
+
+    <body>
+        <div class="header">
+            <nav class="navbar navbar-expand-sm" id="nav1">
+                <a class="navbar-brand" href="/mainPage"><img src="../static/resourses/img/PPM1.png" style="height: 40px; padding-left: 15%;"></a>
+                <a class="navbar" href="/account" ><img src="../static/resourses/img/account.png" style="height: 40px; margin-left: 2900%;"></a>
+                {% if session['user']%}
+                <a class="navbar" href="/exit" >Выход</a>
+                {% endif %}
+              </nav>
+        </div>
+
+        <div class="content">
+            <div class="cardInfo"> <img src="../static/resourses/img/welcome.jpg" style="width: 55%;  margin-left: 22.5%; margin-top: 1%;"> </div>
+
+                <div class="blockInfo">
+                  
+                  <div class="img1">
+                    <div style="text-align: center;"> <img id="prem" src="../static/resourses/img/1.png"><br /> Мы подберём <br/> нужный инструмент</div>
+                    <div style="text-align: center;"> <img id="prem" src="../static/resourses/img/2.png"><br /> Мы расскажем <br/> как измерить</div>
+                  </div>
+                   
+                  <div class="img2">
+                    <div style="text-align: center;"> <img id="prem" src="../static/resourses/img/3.png"><br /> Мы предоставим <br/> сочетания материалов</div>
+                    <div style="text-align: center;"> <img id="prem" src="../static/resourses/img/4.png"><br /> Мы расскажем <br/> как ремонтировать</div>
+                  </div>
+                </div>
+                
+
+                
+                <div class="wrap">
+                 <a href="/counterPage"> <button class="button">Начать расчеты</button> </a>
+                </div>
+        </div>
+
+        <footer
+        class="text-center text-lg-start text-white"
+        style="background-color: #1c2331; margin-top: 5.9%;"
+        >
+
+  </section>
+ 
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5" style="height: 214px;">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold">Ремонтные расчеты материалов</h6>
+          <hr
+              class="mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px; background-color: #FFCA18; height: 2px"
+              />
+          <p>
+            Данный продукт предназначен для реализации быстрых и точных расчётов строительно-ремонтных 
+            материалов и составления реестра.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold">Наши продукты</h6>
+          <hr
+              class="mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px; background-color: #FFCA18; height: 2px"
+              />
+          <p>
+            <a href="#!" class="text-white">Ремонтные расчеты материалов</a>
+          </p>
+          <!-- <p>
+            <a href="#!" class="text-white">...</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">...</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">...</a> -->
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-5">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold">Полезные ссылки</h6>
+          <hr
+              class="mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px; background-color: #FFCA18; height: 2px"
+              />
+          
+          <p>
+            <a href="#!" class="text-white">Советы</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Помощь</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Как измерять?</a>
+          </p>
+          <p>
+            <a href="#!" class="text-white">Статьи о ремонте</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold">Контакты</h6>
+          <hr
+              class="mb-4 mt-0 d-inline-block mx-auto"
+              style="width: 60px; background-color: #FFCA18; height: 2px"
+              />
+          <p><i class="mr-3"></i> Тюмень, 625000, Россия</p>
+          <p><i class="mr-3"></i> PPM@mail.ru</p>
+          <p><i class="mr-3"></i> +7 992 333 22 22</p>
+          
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div
+       class="text-center p-3"
+       style="background-color: rgba(0, 0, 0, 0.2)"
+       >
+    © 2021 Copyright:
+    <a class="text-white" href="https://PPM.ru/"
+       >PPM.ru</a
+      >
+  </div>
+  <!-- Copyright -->
+</footer>
+
+
+</body>
+</html>
